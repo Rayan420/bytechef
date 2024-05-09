@@ -96,9 +96,11 @@ class OnBoardingScreenState extends State<OnBoardingScreen> {
                     duration: 500,
                   );
                 } else {
-                  SharedPreferencesConfig.saveWelcome("loadWelcome", false);
-                  print(SharedPreferencesConfig.getWelcome("loadWelcome"));
-                  Navigator.popAndPushNamed(context, "/auth");
+                  setState(() {
+                    SharedPreferencesConfig.saveWelcome("loadWelcome", false);
+                    print(SharedPreferencesConfig.getWelcome("loadWelcome"));
+                    Navigator.popAndPushNamed(context, "/auth");
+                  });
                 }
               },
               color: tPrimaryColor,

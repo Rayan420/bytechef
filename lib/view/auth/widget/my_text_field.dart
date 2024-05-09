@@ -48,7 +48,7 @@ class MyTextField extends StatelessWidget {
         validator: validator,
         decoration: InputDecoration(
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(25),
+            borderRadius: BorderRadius.circular(10),
             borderSide: const BorderSide(
               color: Colors.transparent,
               width: 1,
@@ -58,7 +58,7 @@ class MyTextField extends StatelessWidget {
             // Border when selected
             borderSide:
                 BorderSide(color: Color.fromARGB(255, 219, 219, 219), width: 2),
-            borderRadius: BorderRadius.all(Radius.circular(25)),
+            borderRadius: BorderRadius.all(Radius.circular(10)),
           ),
           suffixIcon: suffixIcon,
           prefixIcon: prefixIcon,

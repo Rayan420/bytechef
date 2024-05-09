@@ -1,7 +1,10 @@
 // ignore_for_file: prefer_const_constructors, unused_local_variable
 
-import 'package:bytechef/view/Home/home.dart';
+import 'package:bytechef/global/bottom_nav_bar.dart';
 import 'package:bytechef/view/auth/auth.dart';
+import 'package:bytechef/view/auth/forgot_password.dart';
+import 'package:bytechef/view/auth/login.dart';
+import 'package:bytechef/view/auth/signup.dart';
 import 'package:bytechef/view/onboarding/onboardin_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -10,12 +13,18 @@ class RouteGenerator {
     final args = settings.arguments;
 
     switch (settings.name) {
-      case '/':
-        return MaterialPageRoute(builder: (_) => HomeScreen());
+      case '/home':
+        return MaterialPageRoute(builder: (_) => NavBar());
       case '/onboarding':
         return MaterialPageRoute(builder: (_) => OnBoardingScreen());
       case '/auth':
         return MaterialPageRoute(builder: (_) => Authentication());
+      case '/login':
+        return MaterialPageRoute(builder: (_) => LogIn());
+      case '/signup':
+        return MaterialPageRoute(builder: (_) => SignUp());
+      case '/forgot-password':
+        return MaterialPageRoute(builder: (_) => ForgotPassword());
 
       default:
         return _errorRoute();

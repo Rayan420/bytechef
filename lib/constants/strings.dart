@@ -16,26 +16,27 @@ const tOnBoardingSubtitle3 = "Simple way to find Tasty Recipe.";
 const tOnBoarding3SubTitle2 = '100K+ recipes from top chefs and food bloggers.';
 
 // welcome screen texts
-const tWelcomeTitle = "InnerSpace";
 const tWelcomeSubtitle = "Lets get Loud! 🎙️";
 const tGetStarted = "Get Started";
-const tLogin = "Sign In";
-const tSignUp = "Sign Up";
+const tLogin = "Sign in";
+const tSignUp = "Sign up";
 const tGoogleLogo = "assets/images/google-logo.png";
+const tMetaLogo = "assets/images/meta-logo.png";
 
 // signup screen texts
-const tsignUpTitle = "Get Started with InnerSpace";
-const tsignUpSubtitle = "Real voices, real talks. Let's get loud! 🔥";
+const tsignUpTitle = "Create an Account";
+const tsignUpSubtitle =
+    "Let’s help you set up your account, it won’t take long.";
 const tEmail = "Email";
 const tPassword = "Password";
 const tConfirmPassword = "Confirm Password";
 const tFullName = "Full Name";
-const tSignUpWith = "Or Sign Up With ";
-const tAlreadyHaveAnAccount = "Already have an account? ";
+const tSignUpWith = "or sign in with ";
+const tAlreadyHaveAnAccount = "Already a member? ";
 
 // login screen texts
-const tLoginTitle = "Welcome Back to Your InnerSpace!";
-const tLoginSubtitle = "Let's get back to the conversation 🎙";
+const tLoginTitle = "Hello There,";
+const tLoginSubtitle = "Welcome back chef! Please sign in to your account.";
 const tSignInWith = "Or Sign In With";
 const tDontHaveAnAccount = "Don't have an account? ";
 
@@ -52,3 +53,12 @@ const tResetPasswordSubtitle =
 const tNewPassword = "New Password";
 const tConfirmNewPassword = "Confirm New Password";
 const tResetPassword = "Reset Password";
+
+const tVerifyOtpTitle = "Verify OTP";
+const tVerifyOtpSubtitle =
+    "Please enter the OTP sent to your email address to verify your account";
+const tVerify = "Verify";
+
+const tNewPasswordTitle = "Create New Password";
+const tNewPasswordSubtitle =
+    "Please enter your new password, make sure the new password does not match your current password.";

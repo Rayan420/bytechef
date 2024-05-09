@@ -4,8 +4,12 @@ class SharedPreferencesConfig {
   static SharedPreferences? _preferences;
 
   static Future<void> initialize() async {
-    _preferences = await SharedPreferences.getInstance();
-    // check if welcome key exists
+    try {
+      _preferences = await SharedPreferences.getInstance();
+    } catch (e) {
+      print('SharedPreferences initialization error: $e');
+      // Handle initialization error, if any
+    }
   }
 
   static Future<void> saveWelcome(String key, bool value) async {

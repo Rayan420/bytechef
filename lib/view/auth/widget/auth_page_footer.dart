@@ -1,22 +1,23 @@
 import 'package:bytechef/constants/colors.dart';
 import 'package:bytechef/constants/sizes.dart';
 import 'package:bytechef/constants/strings.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
 class AuthPageFooter extends StatelessWidget {
-  const AuthPageFooter({
-    super.key,
-    required this.isDarkMode,
-    required this.tAuthMethod,
-    required this.tAlternative,
-    required this.route,
-  });
+  const AuthPageFooter(
+      {super.key,
+      required this.isDarkMode,
+      required this.tAuthMethod,
+      required this.tAlternative,
+      required this.route,
+      required this.footerText});
 
   final bool isDarkMode;
   final String tAuthMethod;
   final String tAlternative;
   final String route;
+  final String footerText;
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +32,40 @@ class AuthPageFooter extends StatelessWidget {
                 color: isDarkMode ? tWhiteColor : tBlackColor,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Text(tAuthMethod),
+            Expanded(
+              flex: 10,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 1,
+                      color: isDarkMode ? tWhiteColor : tBlackColor,
+                    ),
+                  ),
+                  Container(
+                    width: 50, // Adjust the width as needed
+                    height: 1, // Adjust the height as needed
+                    color: Colors.grey,
+                    margin: const EdgeInsets.symmetric(horizontal: 5),
+                  ),
+                  Text(
+                    tAuthMethod,
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                  Container(
+                    width: 50, // Adjust the width as needed
+                    height: 1, // Adjust the height as needed
+                    color: Colors.grey,
+                    margin: const EdgeInsets.symmetric(horizontal: 5),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 1,
+                      color: isDarkMode ? tWhiteColor : tBlackColor,
+                    ),
+                  ),
+                ],
+              ),
             ),
             Expanded(
               child: Container(
@@ -45,20 +77,43 @@ class AuthPageFooter extends StatelessWidget {
           ],
         ),
         const SizedBox(height: tFormHeight - 20),
-        ElevatedButton(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(
-            side: const BorderSide(color: Colors.black12, width: 1),
-            backgroundColor: tWhiteColor,
-            elevation: 3,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                side: const BorderSide(color: Colors.black12, width: 1),
+                backgroundColor: tWhiteColor,
+                elevation: 3,
+                shape: RoundedRectangleBorder(
+                  borderRadius:
+                      BorderRadius.circular(10), // Increased border radius
+                ),
+              ),
+              child: const Image(
+                image: AssetImage(tGoogleLogo),
+                width: 20,
+              ),
             ),
-          ),
-          child: const Image(
-            image: AssetImage(tGoogleLogo),
-            width: 20,
-          ),
+            const SizedBox(width: tFormHeight / 2),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                side: const BorderSide(color: Colors.black12, width: 1),
+                backgroundColor: tWhiteColor,
+                elevation: 3,
+                shape: RoundedRectangleBorder(
+                  borderRadius:
+                      BorderRadius.circular(10), // Increased border radius
+                ),
+              ),
+              child: const Image(
+                image: AssetImage(tMetaLogo),
+                width: 20,
+              ),
+            ),
+          ],
         ),
         TextButton(
           onPressed: () {
@@ -66,10 +121,17 @@ class AuthPageFooter extends StatelessWidget {
           },
           child: Text.rich(TextSpan(children: [
             TextSpan(
-                text: tDontHaveAnAccount,
-                // ignore: deprecated_member_use
-                style: Theme.of(context).textTheme.bodyText1),
-            TextSpan(text: tAlternative.toUpperCase()),
+              text: footerText,
+              // ignore: deprecated_member_use
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold, color: tBlackColor),
+            ),
+            TextSpan(
+              text: tAlternative,
+              style: const TextStyle(
+                color: tAccentColor,
+              ),
+            ),
           ])),
         )
       ],
