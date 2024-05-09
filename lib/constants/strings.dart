@@ -11,8 +11,9 @@ const tOnBoardingTitle3 = "Get Cooking";
 const tOnBoardingSubtitle1 = "Your simple way to finding tasty recipes.";
 const tOnBoardingSubtitle2 =
     "Join a community of food lovers to share your favorite recipes, tips, and experiences.";
-const tOnBoardingSubtitle3 =
-    "Participate in discussions about cooking techniques, ingredients, and culinary trends.";
+const tOnBoardingSubtitle3 = "Simple way to find Tasty Recipe.";
+
+const tOnBoarding3SubTitle2 = '100K+ recipes from top chefs and food bloggers.';
 
 // welcome screen texts
 const tWelcomeTitle = "InnerSpace";

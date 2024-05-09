@@ -1,3 +1,4 @@
+import 'package:bytechef/constants/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:bytechef/view/onboarding/model/onboard_model.dart';
 
@@ -16,57 +17,58 @@ class OnBoardingWidgetLast extends StatelessWidget {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 30),
           decoration: BoxDecoration(
-            image: const DecorationImage(
-              image: AssetImage('assets/images/onboarding3.jpg'),
+            gradient: LinearGradient(colors: [
+              Colors.black.withOpacity(1),
+              Colors.black.withOpacity(1),
+            ]),
+            image: DecorationImage(
+              colorFilter: ColorFilter.mode(
+                Colors.black.withOpacity(0.4),
+                BlendMode.dstATop,
+              ),
+              image: const AssetImage('assets/images/onboarding3.jpg'),
               fit: BoxFit.fill,
             ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black
-                    .withOpacity(0.6), // Adjust opacity for desired effect
-                blurRadius: 1.0, // Adjust blur for softness
-                spreadRadius: 0, // Spread radius zero to make it linear
-                offset: Offset(0, 1), // Move shadow vertically downwards
-              ),
-            ],
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Column(
                 children: [
+                  const SizedBox(
+                    height: 50,
+                    child: Image(
+                      image: AssetImage('assets/images/chef.png'),
+                    ),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.01,
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.45,
+                    child: const Text(
+                      tOnBoarding3SubTitle2,
+                      style: TextStyle(fontSize: 16, color: Colors.white),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
                   Text(
                     model.title,
                     style: const TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                    ),
+                        fontSize: 50,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
                   ),
                   const SizedBox(height: 10),
                   Text(
                     model.subtitle,
-                    style: Theme.of(context).textTheme.subtitle1,
+                    style: const TextStyle(fontSize: 16, color: Colors.white),
                     textAlign: TextAlign.center,
                   ),
                 ],
               ),
               const SizedBox(height: 10),
             ],
-          ),
-        ),
-        Positioned.fill(
-          bottom: 0,
-          child: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.bottomCenter,
-                end: Alignment.topCenter,
-                colors: [
-                  Colors.black.withOpacity(0.6),
-                  Colors.transparent,
-                ],
-              ),
-            ),
           ),
         ),
       ],

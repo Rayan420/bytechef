@@ -1,3 +1,4 @@
+import 'package:bytechef/config/routes.dart';
 import 'package:bytechef/view/onboarding/onboardin_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,8 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: OnBoardingScreen());
+    return const MaterialApp(
+        onGenerateRoute: RouteGenerator.generateRoute,
+        home: OnBoardingScreen());
   }
 }
