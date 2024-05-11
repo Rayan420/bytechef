@@ -1,4 +1,5 @@
 import 'package:bytechef/constants/colors.dart';
+import 'package:bytechef/data/user.dart';
 import 'package:bytechef/view/home/home.dart';
 import 'package:bytechef/view/add/add.dart';
 import 'package:bytechef/view/bookmarks/bookmarks.dart';
@@ -7,10 +8,11 @@ import 'package:bytechef/view/profile/profile.dart';
 import 'package:flutter/material.dart';
 
 class NavBar extends StatefulWidget {
-  const NavBar({super.key});
+  const NavBar({super.key, required this.user});
 
   @override
   State<NavBar> createState() => _NavBarState();
+  final User user;
 }
 
 class _NavBarState extends State<NavBar> {
@@ -24,12 +26,18 @@ class _NavBarState extends State<NavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(index: tabIndex, children: const [
-        HomeScreen(),
+      body: IndexedStack(index: tabIndex, children: [
+        HomeScreen(user:  widget.user),
         Bookmarks(),
-        Add(),
-        Notifications(),
-        Profile()
+        Add(
+          user: widget.user,
+        ),
+        Notifications(
+          user: widget.user,
+        ),
+        Profile(
+          user: widget.user,
+        )
       ]),
       bottomNavigationBar: BottomAppBar(
           color: Colors.white,
@@ -61,8 +69,10 @@ class _NavBarState extends State<NavBar> {
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(50))),
         backgroundColor: tPrimaryColor,
-        onPressed: () => Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => const Add())),
+        onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => Add(
+                  user: widget.user,
+                ))),
         child: const Icon(
           Icons.add,
           color: Colors.white,

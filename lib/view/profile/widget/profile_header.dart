@@ -1,12 +1,14 @@
 import 'package:bytechef/constants/colors.dart';
 import 'package:bytechef/constants/strings.dart';
+import 'package:bytechef/data/user.dart';
 import 'package:bytechef/global/custom_button.dart';
 import 'package:bytechef/view/profile/widget/profile_data.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ProfileHeader extends StatelessWidget {
-  const ProfileHeader({Key? key});
+  const ProfileHeader({Key? key, required this.user});
+  final User user;
 
   @override
   Widget build(BuildContext context) {
@@ -27,42 +29,43 @@ class ProfileHeader extends StatelessWidget {
                   children: [
                     const CircleAvatar(
                       radius: 50,
-                      backgroundImage: AssetImage('assets/images/profile.jpg'),
+                      backgroundImage: AssetImage('assets/images/profile.png'),
                     ),
                     SizedBox(
                         width: size.width *
                             0.04), // Add some space between the avatar and text
-                    const ProfileData(
+                    ProfileData(
                       label: 'Recipes',
-                      value: '20',
+                      value: user.recipes?.length.toString(),
                     ),
                     SizedBox(width: size.width * 0.04),
-                    const ProfileData(
+                    ProfileData(
                       label: 'Followers',
-                      value: '1200',
+                      value: user.followers,
                     ),
                     SizedBox(width: size.width * 0.04),
-                    const ProfileData(
+                    ProfileData(
                       label: 'Following',
-                      value: '200',
+                      value: user.following,
                     ),
                   ],
                 )),
             SizedBox(
                 height: size.height *
                     0.01), // Add some space between the avatar and text
-            const Text(
-              'Tasya Aulianza ',
+            Text(
+              user.name[0].toUpperCase() + user.name.substring(1),
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black,
                 fontFamily: 'Poppins',
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
               ),
             ),
-            const Text(
-              '@tasyaaauz',
+            Text(
+              // concat user name with @ and remove witespace
+              '@${user.name.replaceAll(' ', '')}',
               textAlign: TextAlign.center,
             ),
 

@@ -3,6 +3,8 @@
 import 'package:bytechef/constants/colors.dart';
 import 'package:bytechef/constants/sizes.dart';
 import 'package:bytechef/constants/strings.dart';
+import 'package:bytechef/data/user.dart';
+import 'package:bytechef/data/userrepo.dart';
 import 'package:bytechef/view/auth/widget/auth_page_footer.dart';
 import 'package:bytechef/view/auth/widget/form_header.dart';
 import 'package:bytechef/view/auth/widget/my_text_field.dart';
@@ -65,8 +67,7 @@ class _LogInState extends State<LogIn> {
                               hintText: 'Email',
                               obscureText: false,
                               keyboardType: TextInputType.emailAddress,
-                              prefixIcon:
-                                  const Icon(CupertinoIcons.person_fill),
+                              prefixIcon: const Icon(CupertinoIcons.mail_solid),
                               validator: (val) {
                                 if (val!.isEmpty) {
                                   return 'Please fill in this field';
@@ -140,8 +141,31 @@ class _LogInState extends State<LogIn> {
                                         ),
                                       ),
                                       onPressed: () {
-                                        Navigator.popAndPushNamed(
-                                            context, '/home');
+                                        // validate inputs
+                                        if (_formKey.currentState!.validate()) {
+                                          setState(() {
+                                            signInRequired = true;
+                                          });
+                                          // sign in user
+                                          User.login(emailController.text,
+                                                  passwordController.text)
+                                              .then((value) {
+                                            if (value == null) {
+                                              setState(() {
+                                                _errorMsg =
+                                                    'Invalid email or password';
+                                                signInRequired = false;
+                                              });
+                                            } else {
+                                              print(
+                                                  UserRepository.users.length);
+                                              // Navigate to the home screen with the user object as an argument
+                                              Navigator.popAndPushNamed(
+                                                  context, '/home',
+                                                  arguments: value);
+                                            }
+                                          });
+                                        }
                                       },
                                       child: const Row(
                                         mainAxisAlignment:

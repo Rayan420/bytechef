@@ -1,9 +1,11 @@
+import 'package:bytechef/data/user.dart';
 import 'package:bytechef/view/profile/widget/profile_body.dart';
 import 'package:bytechef/view/profile/widget/profile_header.dart';
 import 'package:flutter/material.dart';
 
 class Profile extends StatelessWidget {
-  const Profile({super.key});
+  const Profile({super.key, required this.user});
+  final User user;
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +18,13 @@ class Profile extends StatelessWidget {
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.bold)),
         ),
-        body: const Column(
+        body: Column(
           children: [
-            ProfileHeader(),
+            ProfileHeader(user: user),
             SizedBox(height: 20), // Add some space between the header and body
-            ProfileBody(),
+            ProfileBody(
+              user: user,
+            ),
           ],
         ));
   }

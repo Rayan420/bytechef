@@ -3,6 +3,7 @@
 import 'package:bytechef/constants/colors.dart';
 import 'package:bytechef/constants/sizes.dart';
 import 'package:bytechef/constants/strings.dart';
+import 'package:bytechef/data/user.dart';
 import 'package:bytechef/view/auth/widget/auth_page_footer.dart';
 import 'package:bytechef/view/auth/widget/form_header.dart';
 import 'package:bytechef/view/auth/widget/my_text_field.dart';
@@ -196,8 +197,57 @@ class _SignUpState extends State<SignUp> {
                                           ),
                                         ),
                                         onPressed: () {
-                                          Navigator.popAndPushNamed(
-                                              context, '/home');
+                                          if (_formKey.currentState!
+                                              .validate()) {
+                                            setState(() {
+                                              signUpRequired = true;
+                                            });
+
+                                            User.register(
+                                                    email: emailController.text,
+                                                    name:
+                                                        userNameController.text,
+                                                    followers: '0',
+                                                    following: '0',
+                                                    password:
+                                                        passwordController.text)
+                                                .then((value) {
+                                              User.persistRegister(user: value!)
+                                                  .then((value) {
+                                                setState(() {
+                                                  signUpRequired = false;
+                                                });
+                                                if (value) {
+                                                  // Navigate to the home screen or show a success message
+                                                  Navigator.popAndPushNamed(
+                                                      context, '/home',
+                                                      arguments: value);
+                                                } else {
+                                                  // Show an error message to the user
+                                                  setState(() {
+                                                    _error =
+                                                        'Registration failed. Please try again.';
+                                                  });
+                                                }
+                                              });
+                                              setState(() {
+                                                signUpRequired = false;
+                                              });
+
+                                              if (value != null) {
+                                                // Navigate to the home screen or show a success message
+                                                Navigator.popAndPushNamed(
+                                                    context, '/home',
+                                                    arguments: value);
+                                              } else {
+                                                // Show an error message to the user
+                                                setState(() {
+                                                  _error =
+                                                      'Registration failed. Please try again.';
+                                                });
+                                              }
+                                            });
+                                          }
                                         },
                                         child: const Row(
                                           mainAxisAlignment:

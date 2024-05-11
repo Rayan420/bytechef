@@ -1,0 +1,357 @@
+[
+    {
+        "user": {
+          "name": "John Doe",
+          "email": "john.doe@example.com",
+          "password": "secure_password",
+          "followers": "1000",
+          "following": "500",
+          "recipes": [
+            {
+              "id": "123456789",
+              "name": "Delicious Chicken Curry",
+              "image": null,
+              "video": null,
+              "imageUrl": "https://i.ytimg.com/vi/WRYOVVexMhU/maxresdefault.jpg",
+              "videoUrl": "https://www.youtube.com/watch?v=WRYOVVexMhU",
+              "duration": "1 hour",
+              "serving": "4 servings",
+              "description": "A mouthwatering chicken curry recipe packed with spices.",
+              "ingredients": [
+                "2 lbs chicken pieces",
+                "2 onions, chopped",
+                "3 tomatoes, chopped",
+                "4 cloves garlic, minced",
+                "1 inch ginger, grated",
+                "2 green chilies, chopped",
+                "1/2 cup yogurt",
+                "2 tablespoons oil",
+                "1 teaspoon cumin seeds",
+                "1 teaspoon coriander powder",
+                "1/2 teaspoon turmeric powder",
+                "1 teaspoon garam masala",
+                "Salt to taste",
+                "Fresh coriander leaves for garnish"
+              ],
+              "steps": [
+                "Heat oil in a pan and add cumin seeds. Let them crackle.",
+                "Add chopped onions and sauté until golden brown.",
+                "Add minced garlic, grated ginger, and chopped green chilies. Sauté for 2 minutes.",
+                "Add chopped tomatoes and cook until they turn soft.",
+                "Add coriander powder, turmeric powder, and salt. Mix well.",
+                "Add chicken pieces and cook until they are no longer pink.",
+                "Add yogurt and garam masala. Mix well and cook for another 10-15 minutes.",
+                "Garnish with fresh coriander leaves before serving."
+              ],
+              "rating": 4.5,
+              "views": 10000,
+              "reviews": {
+                "user1": "Great recipe!",
+                "user2": "Tastes amazing!",
+                "user3": "Perfect blend of spices!",
+                "user4": "My family loved it!",
+                "user5": "Will definitely make again!",
+                "user6": "Simple yet delicious!"
+              }
+            },
+            {
+              "id": "234567890",
+              "name": "Spicy Grilled Chicken",
+              "image": null,
+              "video": null,
+              "imageUrl": "https://www.yummytummyaarthi.com/wp-content/uploads/2015/11/1-54.jpg",
+              "videoUrl": "https://www.youtube.com/watch?v=sbUiG3U-VAo",
+              "duration": "30 minutes",
+              "serving": "4 servings",
+              "description": "Juicy grilled chicken marinated in a spicy sauce.",
+              "ingredients": [
+                "4 chicken breasts",
+                "1/4 cup soy sauce",
+                "2 tablespoons hot sauce",
+                "2 tablespoons olive oil",
+                "1 tablespoon honey",
+                "1 teaspoon paprika",
+                "1/2 teaspoon garlic powder",
+                "Salt and pepper to taste",
+                "Lemon wedges for serving"
+              ],
+              "steps": [
+                "In a bowl, mix together soy sauce, hot sauce, olive oil, honey, paprika, garlic powder, salt, and pepper.",
+                "Add chicken breasts to the marinade and coat well. Let marinate for at least 30 minutes.",
+                "Preheat grill to medium-high heat. Grill chicken breasts for 6-8 minutes per side, or until cooked through.",
+                "Serve grilled chicken with lemon wedges."
+              ],
+              "rating": 4.2,
+              "views": 8000,
+              "reviews": {
+                "user1": "Spicy and delicious!",
+                "user2": "Perfect for summer BBQs!",
+                "user3": "My favorite grilled chicken recipe!",
+                "user4": "Quick and easy to make!",
+                "user5": "Great flavor!",
+                "user6": "Family loved it!"
+              }
+            },
+            {
+              "id": "345678901",
+              "name": "Creamy Chicken Alfredo",
+              "image": null,
+              "video": null,
+              "imageUrl": "https://www.recipetineats.com/wp-content/uploads/2017/03/One-Pot-Chicken-Alfredo-2.jpg",
+              "videoUrl": "https://www.youtube.com/watch?v=LPPcNPdq_j4",
+              "duration": "45 minutes",
+              "serving": "4 servings",
+              "description": "Rich and creamy chicken alfredo pasta with a homemade alfredo sauce.",
+              "ingredients": [
+                "8 oz fettuccine pasta",
+                "2 chicken breasts, thinly sliced",
+                "2 tablespoons butter",
+                "2 cloves garlic, minced",
+                "1 cup heavy cream",
+                "1/2 cup grated Parmesan cheese",
+                "Salt and pepper to taste",
+                "Chopped parsley for garnish"
+              ],
+              "steps": [
+                "Cook fettuccine pasta according to package instructions. Drain and set aside.",
+                "In a large skillet, melt butter over medium heat. Add minced garlic and cook until fragrant.",
+                "Add chicken breast slices to the skillet and cook until no longer pink.",
+                "Pour in heavy cream and bring to a simmer. Stir in grated Parmesan cheese until sauce is smooth and creamy.",
+                "Season with salt and pepper to taste. Add cooked fettuccine pasta to the skillet and toss until well coated.",
+                "Garnish with chopped parsley before serving."
+              ],
+              "rating": 4.7,
+              "views": 12000,
+              "reviews": {
+                "user1": "Absolutely delicious!",
+                "user2": "Best alfredo I've ever had!",
+                "user3": "Creamy and flavorful!",
+                "user4": "My go-to recipe for chicken alfredo!",
+                "user5": "Restaurant-quality alfredo sauce!",
+                "user6": "Family favorite!"
+              }
+            },
+            {
+              "id": "456789012",
+              "name": "Honey Garlic Chicken Stir Fry",
+              "image": null,
+              "video": null,
+              "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaXwlcqI41D-Y2cX7Z4VGO_wisxqiKIxcBtrDA7d4Yyg&s",
+              "videoUrl": "https://www.youtube.com/watch?v=TA_-wZMz0N8",
+              "duration": "25 minutes",
+              "serving": "4 servings",
+              "description": "Quick and easy chicken stir fry with a sweet and savory honey garlic sauce.",
+              "ingredients": [
+                "1 lb chicken breast, thinly sliced",
+                "2 tablespoons soy sauce",
+                "2 tablespoons honey",
+                "2 cloves garlic, minced",
+                "1 teaspoon ginger, minced",
+                "2 tablespoons vegetable oil",
+                "1 bell pepper, sliced",
+                "1 cup broccoli florets",
+                "1 carrot, julienned",
+                "Cooked rice for serving"
+              ],
+              "steps": [
+                "In a bowl, mix together soy sauce, honey, minced garlic, and minced ginger.",
+                "Heat vegetable oil in a large skillet or wok over medium-high heat. Add chicken slices and cook until browned.",
+                "Add bell pepper, broccoli, and carrot to the skillet. Cook until vegetables are tender-crisp.",
+                "Pour the honey garlic sauce over the chicken and vegetables. Stir well to coat everything evenly.",
+                "Cook for another 2-3 minutes until the sauce thickens slightly.",
+                "Serve hot over cooked rice."
+              ],
+              "rating": 4.4,
+              "views": 9000,
+              "reviews": {
+                "user1": "Amazing flavors!",
+                "user2": "Quick and easy dinner option!",
+                "user3": "Delicious sauce!",
+                "user4": "Kids loved it!",
+                "user5": "Will make again!",
+                "user6": "Great for busy weeknights!"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "user": {
+            
+                "name": "Mike Johnson",
+                "email": "mike.johnson@example.com",
+                "password": "secure_password",
+                "followers": "500",
+                "following": "200",
+                "recipes": [
+                  {
+                    "id": "987654321",
+                    "name": "Savory Beef Stew",
+                    "image": null,
+                    "video": null,
+                    "imageUrl": "https://mymothersdaughter.net/wp-content/uploads/2015/03/savory-beef-stew-750x500.jpg",
+                    "videoUrl": "https://www.youtube.com/watch?v=8p-f9DcVkgE",
+                    "duration": "2 hours",
+                    "serving": "6 servings",
+                    "description": "Hearty beef stew loaded with vegetables and rich flavors.",
+                    "ingredients": [
+                      "2 lbs beef stew meat, cubed",
+                      "4 potatoes, peeled and diced",
+                      "4 carrots, sliced",
+                      "2 onions, chopped",
+                      "4 cloves garlic, minced",
+                      "4 cups beef broth",
+                      "1 cup red wine",
+                      "2 tablespoons tomato paste",
+                      "1 teaspoon thyme",
+                      "1 bay leaf",
+                      "Salt and pepper to taste",
+                      "Chopped parsley for garnish"
+                    ],
+                    "steps": [
+                      "In a large pot, brown beef stew meat in olive oil over medium heat.",
+                      "Add onions and garlic, sauté until softened.",
+                      "Stir in tomato paste and cook for 2 minutes.",
+                      "Pour in beef broth and red wine. Add potatoes, carrots, thyme, bay leaf, salt, and pepper.",
+                      "Simmer covered for 1.5 to 2 hours until beef and vegetables are tender.",
+                      "Remove bay leaf before serving. Garnish with chopped parsley."
+                    ],
+                    "rating": 4.8,
+                    "views": 15000,
+                    "reviews": {
+                      "user1": "Absolutely delicious!",
+                      "user2": "Best beef stew ever!",
+                      "user3": "Perfect for cold weather!",
+                      "user4": "Family favorite!",
+                      "user5": "Will make again!",
+                      "user6": "Hearty and comforting!"
+                    }
+                  },
+                  {
+                    "id": "876543210",
+                    "name": "Beef Tacos",
+                    "image": null,
+                    "video": null,
+                    "imageUrl": "https://www.onceuponachef.com/images/2023/08/Beef-Tacos.jpg",
+                    "videoUrl": "https://www.youtube.com/watch?v=hq6NEcrN0Es",
+                    "duration": "30 minutes",
+                    "serving": "4 servings",
+                    "description": "Tasty tacos filled with seasoned beef and toppings.",
+                    "ingredients": [
+                      "1 lb ground beef",
+                      "1 packet taco seasoning",
+                      "8 taco shells",
+                      "1 cup shredded lettuce",
+                      "1 cup diced tomatoes",
+                      "1/2 cup shredded cheddar cheese",
+                      "1/4 cup diced onions",
+                      "Sour cream and salsa for serving"
+                    ],
+                    "steps": [
+                      "In a skillet, brown ground beef over medium heat. Drain excess fat.",
+                      "Stir in taco seasoning and cook according to package instructions.",
+                      "Warm taco shells in the oven according to package instructions.",
+                      "Fill taco shells with seasoned beef, lettuce, tomatoes, cheese, and onions.",
+                      "Serve with sour cream and salsa on the side."
+                    ],
+                    "rating": 4.3,
+                    "views": 11000,
+                    "reviews": {
+                      "user1": "Easy and delicious!",
+                      "user2": "Great for Taco Tuesday!",
+                      "user3": "Family loved it!",
+                      "user4": "Will make again!",
+                      "user5": "Quick dinner option!",
+                      "user6": "Perfect for parties!"
+                    }
+                  },
+                  {
+                    "id": "765432109",
+                    "name": "Beef Stir Fry",
+                    "image": null,
+                    "video": null,
+                    "imageUrl": "https://cdn.momsdish.com/wp-content/uploads/2021/07/Steak-Stir-Fry-Recipe-014.jpg",
+                    "videoUrl": "https://www.youtube.com/watch?v=gWKk55tY7kI",
+                    "duration": "25 minutes",
+                    "serving": "4 servings",
+                    "description": "Quick and flavorful beef stir fry with vegetables.",
+                    "ingredients": [
+                      "1 lb beef sirloin, thinly sliced",
+                      "2 tablespoons soy sauce",
+                      "1 tablespoon oyster sauce",
+                      "1 tablespoon sesame oil",
+                      "2 cloves garlic, minced",
+                      "1 teaspoon ginger, minced",
+                      "1 bell pepper, sliced",
+                      "1 cup broccoli florets",
+                      "1 carrot, julienned",
+                      "2 tablespoons vegetable oil",
+                      "Cooked rice for serving"
+                    ],
+                    "steps": [
+                      "In a bowl, mix together soy sauce, oyster sauce, sesame oil, minced garlic, and minced ginger.",
+                      "Marinate beef slices in the sauce for 10-15 minutes.",
+                      "Heat vegetable oil in a large skillet or wok over high heat.",
+                      "Add marinated beef slices and stir fry until browned.",
+                      "Add bell pepper, broccoli, and carrot to the skillet. Stir fry until vegetables are tender-crisp.",
+                      "Serve hot over cooked rice."
+                    ],
+                    "rating": 4.6,
+                    "views": 13000,
+                    "reviews": {
+                      "user1": "Delicious and easy!",
+                      "user2": "Family favorite!",
+                      "user3": "Great for busy weeknights!",
+                      "user4": "Will make again!",
+                      "user5": "Flavorful stir fry!",
+                      "user6": "Quick and tasty dinner!"
+                    }
+                  },
+                  {
+                    "id": "654321098",
+                    "name": "Beef Chili",
+                    "image": null,
+                    "video": null,
+                    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw3009jBPlJMCiG7fEcu4Xz74q2rFQjn5slvvJhva9Ww&s",
+                    "videoUrl": "https://www.youtube.com/watch?v=CqVSsh96XiI",
+                    "duration": "1.5 hours",
+                    "serving": "6 servings",
+                    "description": "Hearty beef chili loaded with beans and spices.",
+                    "ingredients": [
+                      "1 lb ground beef",
+                      "1 onion, chopped",
+                      "3 cloves garlic, minced",
+                      "1 bell pepper, diced",
+                      "1 can (14 oz) diced tomatoes",
+                      "1 can (14 oz) kidney beans, drained and rinsed",
+                      "1 can (14 oz) black beans, drained and rinsed",
+                      "1 cup beef broth",
+                      "2 tablespoons chili powder",
+                      "1 teaspoon cumin",
+                      "1 teaspoon paprika",
+                      "Salt and pepper to taste",
+                      "Sour cream and shredded cheese for serving"
+                    ],
+                    "steps": [
+                      "In a large pot, brown ground beef over medium heat. Drain excess fat.",
+                      "Add chopped onions, minced garlic, and diced bell pepper. Sauté until vegetables are soft.",
+                      "Stir in diced tomatoes, kidney beans, black beans, beef broth, chili powder, cumin, paprika, salt, and pepper.",
+                      "Simmer covered for 1 hour, stirring occasionally.",
+                      "Serve hot with sour cream and shredded cheese on top."
+                    ],
+                    "rating": 4.4,
+                    "views": 10000,
+                    "reviews": {
+                      "user1": "Perfect comfort food!",
+                      "user2": "Great for game day!",
+                      "user3": "Family loved it!",
+                      "user4": "Will make again!",
+                      "user5": "Delicious chili!",
+                      "user6": "Hearty and flavorful!"
+                    }
+                  }
+                ]
+        }
+      }
+      
+]

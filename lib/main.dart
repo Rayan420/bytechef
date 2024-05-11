@@ -1,8 +1,15 @@
+import 'dart:convert';
+
 import 'package:bytechef/config/routes.dart';
 import 'package:bytechef/config/shared_preference_config.dart';
+import 'package:bytechef/data/recipe.dart';
+import 'package:bytechef/data/recipe_repo.dart';
+import 'package:bytechef/data/user.dart';
+import 'package:bytechef/data/userrepo.dart';
 import 'package:bytechef/view/auth/login.dart';
 import 'package:bytechef/view/onboarding/onboardin_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,7 +18,51 @@ void main() async {
 
   await SharedPreferencesConfig.initialize();
   print(SharedPreferencesConfig.getWelcome("loadWelcome"));
+  await loadJson();
+
   runApp(MainApp());
+}
+
+// extract the user data from the json file and the recipes nested in user data create a user object and add it to the user repository and add the recipes to the recipe repository
+Future<void> loadJson() async {
+  String data = await rootBundle.loadString('assets/recipes.json');
+  var jsonResult = json.decode(data);
+
+  for (var userData in jsonResult) {
+    var userJson = userData['user'];
+    User newUser = User(
+      name: userJson['name'],
+      email: userJson['email'],
+      password: userJson['password'],
+      followers: userJson['followers'],
+      following: userJson['following'],
+    );
+
+    for (var recipe in userJson['recipes']) {
+      Recipe newRecipe = Recipe(
+        name: recipe['name'],
+        duration: recipe['duration'],
+        serving: recipe['serving'],
+        description: recipe['description'],
+        rating: recipe['rating'],
+        views: recipe['views'],
+        ingredients: List<String>.from(recipe['ingredients']),
+        steps: List<String>.from(recipe['steps']),
+        owner: newUser,
+        video: recipe['video'], // Handling null case
+        videoUrl: recipe['videoUrl'],
+        imageUrl: recipe['imageUrl'],
+        image: recipe['image'],
+      );
+
+      newUser.addRecipe(newRecipe);
+      RecipeRepository.addRecipe(newRecipe);
+    }
+
+    UserRepository.addUser(newUser);
+  }
+  print(UserRepository.users.length);
+  print(RecipeRepository.recipeRepo.length);
 }
 
 class MainApp extends StatelessWidget {
