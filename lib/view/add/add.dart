@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'dart:io';
-import 'dart:typed_data';
-
 import 'package:bytechef/constants/colors.dart';
 import 'package:bytechef/data/notification.dart';
 import 'package:bytechef/data/recipe.dart';
@@ -28,8 +26,6 @@ class _AddState extends State<Add> {
   final TextEditingController _ingredientController = TextEditingController();
 
   TextEditingController _durationController = TextEditingController();
-  int _hours = 0;
-  int _minutes = 0;
   File? fileImage;
   File? fileVideo;
   int portion = 1;
@@ -40,24 +36,12 @@ class _AddState extends State<Add> {
   @override
   void initState() {
     super.initState();
-    _durationController.addListener(_updateTime);
   }
 
   @override
   void dispose() {
     _durationController.dispose();
     super.dispose();
-  }
-
-  void _updateTime() {
-    final text = _durationController.text;
-    final parts = text.split(':');
-    if (parts.length == 2) {
-      setState(() {
-        _hours = int.tryParse(parts[0]) ?? 0;
-        _minutes = int.tryParse(parts[1]) ?? 0;
-      });
-    }
   }
 
   @override
