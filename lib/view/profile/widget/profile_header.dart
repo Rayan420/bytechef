@@ -5,6 +5,7 @@ import 'package:bytechef/global/custom_button.dart';
 import 'package:bytechef/view/profile/widget/profile_data.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class ProfileHeader extends StatelessWidget {
   const ProfileHeader({Key? key, required this.user});
@@ -27,9 +28,27 @@ class ProfileHeader extends StatelessWidget {
                     .centerLeft, // Align the avatar in the center horizontally
                 child: Row(
                   children: [
-                    const CircleAvatar(
-                      radius: 50,
-                      backgroundImage: AssetImage('assets/images/profile.png'),
+                    Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          width: 1,
+                          color: Colors.grey,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 1,
+                            blurRadius: 2,
+                            offset: Offset(0, 1),
+                          ),
+                        ],
+                      ),
+                      child: const CircleAvatar(
+                        radius: 50,
+                        backgroundImage: NetworkImage(
+                            'https://www.avenuecalgary.com/wp-content/uploads/ChefProfile-MichaelAllemeier.jpg'),
+                      ),
                     ),
                     SizedBox(
                         width: size.width *

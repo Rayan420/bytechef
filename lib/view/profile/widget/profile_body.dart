@@ -18,14 +18,12 @@ class _ProfileBodyState extends State<ProfileBody> {
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2, // Two items per row
-        crossAxisSpacing: 10, // Spacing between columns
-        mainAxisSpacing: 10, // Spacing between rows
-        childAspectRatio: 0.8, // Aspect ratio of each card
+        crossAxisSpacing: 5, // Spacing between columns
       ),
-      itemCount: widget.user.recipes?.length ?? 0,
+      itemCount: widget.user.recipes.length,
       itemBuilder: (context, index) {
-        final recipe = widget.user.recipes![index];
-        return ProfileRecipeCard(recipe: recipe);
+        final recipe = widget.user.recipes[index];
+        return ProfileRecipeCard(recipe: recipe, owner: widget.user);
       },
     );
   }

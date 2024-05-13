@@ -6,6 +6,7 @@ import 'package:bytechef/view/bookmarks/bookmarks.dart';
 import 'package:bytechef/view/notifications/notifications.dart';
 import 'package:bytechef/view/profile/profile.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key, required this.user});
@@ -27,7 +28,7 @@ class _NavBarState extends State<NavBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: IndexedStack(index: tabIndex, children: [
-        HomeScreen(user:  widget.user),
+        HomeScreen(user: widget.user),
         Bookmarks(),
         Add(
           user: widget.user,
@@ -53,16 +54,16 @@ class _NavBarState extends State<NavBar> {
             selectedItemColor: tPrimaryColor,
             unselectedItemColor: Colors.grey,
             items: [
-              itemBar(Icons.home_filled, ""),
-              itemBar(Icons.bookmark, ""),
+              itemBar(Iconsax.home4, ""),
+              itemBar(Iconsax.heart, ""),
               const BottomNavigationBarItem(
                   icon: Icon(
-                    Icons.home,
+                    Iconsax.home,
                     color: Colors.transparent,
                   ),
                   label: ""),
-              itemBar(Icons.notifications, ""),
-              itemBar(Icons.person, "")
+              itemBar(Iconsax.notification, ""),
+              itemBar(Iconsax.user, "")
             ],
           )),
       floatingActionButton: FloatingActionButton(
@@ -74,7 +75,7 @@ class _NavBarState extends State<NavBar> {
                   user: widget.user,
                 ))),
         child: const Icon(
-          Icons.add,
+          Iconsax.add,
           color: Colors.white,
         ),
       ),

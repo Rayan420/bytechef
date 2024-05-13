@@ -12,6 +12,8 @@ class User {
   final String following;
   List<Recipe> recipes = [];
   List<UserNotification> notifications = [];
+  static List<Recipe> savedRecipes = [];
+  static Map<int, Recipe> searchHisotry = {};
 
   User({
     required this.name,
@@ -32,6 +34,18 @@ class User {
   void updateRecipe(Recipe oldRecipe, Recipe newRecipe) {
     recipes[recipes.indexWhere((recipe) => recipe.name == oldRecipe.name)] =
         newRecipe;
+  }
+
+  // method to check if a recipe is saved
+  static bool isRecipeSaved(Recipe recipe) {
+    return savedRecipes.contains(recipe);
+  }
+
+  // add recipe to saved recipe
+  static void toggleSavedRecipe(Recipe recipe) {
+    return isRecipeSaved(recipe)
+        ? savedRecipes.remove(recipe)
+        : savedRecipes.add(recipe);
   }
 
   // from json
@@ -83,7 +97,6 @@ class User {
     }
   }
 
-
   // add notification to user
   void addNotification(UserNotification notification) {
     notifications.add(notification);
@@ -116,8 +129,16 @@ class User {
       user.recipes = RecipeRepository.getRecipesByUser(storedEmail);
       UserRepository.addUser(user);
       return user;
-    } else {
-      return null; // Invalid credentials
+    } else if (UserRepository.users
+        .any((user) => user.email == email && user.password == password)) {
+      return UserRepository.users.firstWhere(
+          (user) => user.email == email && user.password == password);
     }
+    return null; // Login failed
+  }
+
+  // a method to first 3 most recent recipes in search history and the date searched
+  static Map<int, Recipe> getSearchHistory() {
+    return searchHisotry;
   }
 }

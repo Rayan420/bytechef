@@ -1,14 +1,39 @@
 // ignore_for_file: , prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:bytechef/constants/colors.dart';
+import 'package:bytechef/data/recipe.dart';
+import 'package:bytechef/data/recipe_repo.dart';
 import 'package:bytechef/data/user.dart';
+import 'package:bytechef/view/home/widget/bottom_sheet.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:iconsax/iconsax.dart';
 
-class HomeBar extends StatelessWidget {
-  const HomeBar({super.key, required this.user});
+class HomeBar extends StatefulWidget {
+  const HomeBar(
+      {super.key,
+      required this.user,
+      required this.onFiltersApplied,
+      required this.onSearchPressed,
+      required this.showProfile,
+      required this.onSearch,
+      required this.onSearchQuery});
   final User user;
+  final Function(List<String>) onFiltersApplied;
+  final Function(bool) onSearchPressed;
+  final bool showProfile;
+  final Function(List<Recipe>) onSearch;
+  final Function(String) onSearchQuery;
 
+  @override
+  State<HomeBar> createState() => _HomeBarState();
+}
+
+class _HomeBarState extends State<HomeBar> {
+  List<String> selectedFilters = [];
+  List<Recipe> results = [];
+  TextEditingController searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -16,34 +41,56 @@ class HomeBar extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              CircleAvatar(
-                radius: 35,
-                backgroundImage: AssetImage('assets/images/profile.png'),
-              ),
-              const SizedBox(width: 10),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Welcome, 👋🏻',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontFamily: 'Poppins',
-                    ),
-                  ),
-                  Text(
-                    // user.name first letter is capitalized
-                    user.name[0].toUpperCase() + user.name.substring(1),
-                    style: TextStyle(
-                      fontSize: 16,
+          Visibility(
+            visible: widget.showProfile,
+            child: Row(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      width: 1,
                       color: Colors.grey,
                     ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 1,
+                        blurRadius: 2,
+                        offset: Offset(0, 1),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ],
+                  child: CircleAvatar(
+                    radius: 35,
+                    backgroundImage: NetworkImage(
+                        'https://www.avenuecalgary.com/wp-content/uploads/ChefProfile-MichaelAllemeier.jpg'),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Welcome, 👋🏻',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'Poppins',
+                      ),
+                    ),
+                    Text(
+                      // user.name first letter is capitalized
+                      widget.user.name[0].toUpperCase() +
+                          widget.user.name.substring(1),
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
           const SizedBox(height: 20),
           Padding(
@@ -68,10 +115,28 @@ class HomeBar extends StatelessWidget {
                     ),
                     child: Row(
                       children: [
-                        Icon(Icons.search, color: Colors.grey),
+                        Icon(Iconsax.search_normal_1, color: Colors.grey),
                         const SizedBox(width: 10),
                         Expanded(
                           child: TextField(
+                            onTap: () {
+                              widget.onSearchPressed(true);
+                            },
+                            onChanged: (value) {
+                              setState(() {
+                                if (value.isNotEmpty) {
+                                  results =
+                                      RecipeRepository.getRecipesBySearchQuery(
+                                          value);
+                                  widget.onSearch(results);
+                                  widget.onSearchQuery(value);
+                                } else {
+                                  results = [];
+                                  widget.onSearch(results);
+                                  widget.onSearchQuery(value);
+                                }
+                              });
+                            },
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: 'Search for recipes',
@@ -94,10 +159,28 @@ class HomeBar extends StatelessWidget {
                   ),
                   child: IconButton(
                     onPressed: () {
-                      // Handle filter icon button tap
+                      // open bottom sheet
+
+                      showModalBottomSheet(
+                        isScrollControlled: true,
+                        context: context,
+                        builder: (context) {
+                          return BottomSheetFilter(
+                            onFiltersApplied: (selectedFilters) {
+                              setState(() {
+                                this.selectedFilters = selectedFilters;
+                              });
+                              // Handle the selected filters here
+                              // Pass the selected filters to the parent widget
+                              widget.onFiltersApplied(selectedFilters);
+                            },
+                            selectedFilters: selectedFilters,
+                          );
+                        },
+                      );
                     },
                     icon: Icon(
-                      Icons.filter_list,
+                      Iconsax.filter5,
                       color: Colors.white,
                     ),
                   ),

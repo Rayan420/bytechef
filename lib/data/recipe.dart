@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:bytechef/data/user.dart';
+import 'package:flutter/foundation.dart';
 
 class Recipe {
   final String name;
@@ -19,6 +20,8 @@ class Recipe {
   final int views;
   final double rating;
   final Map<String, User> reviews = {};
+  final int searchCount;
+  final List<String> category;
 
   Recipe({
     required this.name,
@@ -34,6 +37,8 @@ class Recipe {
     required this.imageUrl,
     required this.rating,
     required this.views,
+    required this.searchCount,
+    required this.category,
   });
 
   //from json
@@ -49,6 +54,8 @@ class Recipe {
         serving = json['serving'],
         description = json['description'],
         ingredients = List<String>.from(json['ingredients']),
+        searchCount = json['searchCount'],
         steps = List<String>.from(json['steps']),
+        category = List<String>.from(json['category']),
         owner = owner;
 }

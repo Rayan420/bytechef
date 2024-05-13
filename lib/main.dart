@@ -52,7 +52,9 @@ Future<void> loadJson() async {
         video: recipe['video'], // Handling null case
         videoUrl: recipe['videoUrl'],
         imageUrl: recipe['imageUrl'],
+        searchCount: recipe['searchCount'],
         image: recipe['image'],
+        category: List<String>.from(recipe['category']),
       );
 
       newUser.addRecipe(newRecipe);

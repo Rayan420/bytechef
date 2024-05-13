@@ -18,10 +18,12 @@ class Profile extends StatelessWidget {
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.bold)),
         ),
-        body: Column(
+        body: ListView(
           children: [
             ProfileHeader(user: user),
-            SizedBox(height: 20), // Add some space between the header and body
+            SizedBox(
+                height: MediaQuery.of(context).size.height *
+                    0.025), // Add some space between the header and body
             ProfileBody(
               user: user,
             ),

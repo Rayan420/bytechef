@@ -159,6 +159,7 @@ class _LogInState extends State<LogIn> {
                                             } else {
                                               print(
                                                   UserRepository.users.length);
+                                              User.persistRegister(user: value);
                                               // Navigate to the home screen with the user object as an argument
                                               Navigator.popAndPushNamed(
                                                   context, '/home',

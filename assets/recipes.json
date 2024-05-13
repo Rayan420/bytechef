@@ -45,6 +45,15 @@
               ],
               "rating": 4.5,
               "views": 10000,
+              "searchCount": 0,
+              "category": [
+                "chicken",
+                "curry",
+                "spicy",
+                "indian",
+                "flavorful",
+                "comfort food"
+              ],
               "reviews": {
                 "user1": "Great recipe!",
                 "user2": "Tastes amazing!",
@@ -61,7 +70,7 @@
               "video": null,
               "imageUrl": "https://www.yummytummyaarthi.com/wp-content/uploads/2015/11/1-54.jpg",
               "videoUrl": "https://www.youtube.com/watch?v=sbUiG3U-VAo",
-              "duration": "30 minutes",
+              "duration": "30 min",
               "serving": "4 servings",
               "description": "Juicy grilled chicken marinated in a spicy sauce.",
               "ingredients": [
@@ -83,6 +92,15 @@
               ],
               "rating": 4.2,
               "views": 8000,
+              "searchCount":2500,
+              "category": [
+                "chicken",
+                "grilled",
+                "spicy",
+                "juicy",
+                "marinated",
+                "summer"
+              ],
               "reviews": {
                 "user1": "Spicy and delicious!",
                 "user2": "Perfect for summer BBQs!",
@@ -99,7 +117,7 @@
               "video": null,
               "imageUrl": "https://www.recipetineats.com/wp-content/uploads/2017/03/One-Pot-Chicken-Alfredo-2.jpg",
               "videoUrl": "https://www.youtube.com/watch?v=LPPcNPdq_j4",
-              "duration": "45 minutes",
+              "duration": "45 min",
               "serving": "4 servings",
               "description": "Rich and creamy chicken alfredo pasta with a homemade alfredo sauce.",
               "ingredients": [
@@ -122,6 +140,15 @@
               ],
               "rating": 4.7,
               "views": 12000,
+              "searchCount": 7000,
+              "category": [
+                "chicken",
+                "pasta",
+                "creamy",
+                "alfredo",
+                "rich",
+                "comfort food"
+              ],
               "reviews": {
                 "user1": "Absolutely delicious!",
                 "user2": "Best alfredo I've ever had!",
@@ -138,7 +165,7 @@
               "video": null,
               "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaXwlcqI41D-Y2cX7Z4VGO_wisxqiKIxcBtrDA7d4Yyg&s",
               "videoUrl": "https://www.youtube.com/watch?v=TA_-wZMz0N8",
-              "duration": "25 minutes",
+              "duration": "25 min",
               "serving": "4 servings",
               "description": "Quick and easy chicken stir fry with a sweet and savory honey garlic sauce.",
               "ingredients": [
@@ -163,6 +190,15 @@
               ],
               "rating": 4.4,
               "views": 9000,
+              "searchCount": 5000,
+              "category": [
+                "chicken",
+                "stir fry",
+                "quick",
+                "easy",
+                "honey garlic",
+                "vegetables"
+              ],
               "reviews": {
                 "user1": "Amazing flavors!",
                 "user2": "Quick and easy dinner option!",
@@ -218,6 +254,15 @@
                     ],
                     "rating": 4.8,
                     "views": 15000,
+                    "searchCount":150000,
+                    "category": [
+                      "beef",
+                      "stew",
+                      "comfort food",
+                      "hearty",
+                      "vegetables",
+                      "rich flavors"
+                    ],
                     "reviews": {
                       "user1": "Absolutely delicious!",
                       "user2": "Best beef stew ever!",
@@ -234,7 +279,7 @@
                     "video": null,
                     "imageUrl": "https://www.onceuponachef.com/images/2023/08/Beef-Tacos.jpg",
                     "videoUrl": "https://www.youtube.com/watch?v=hq6NEcrN0Es",
-                    "duration": "30 minutes",
+                    "duration": "30 min",
                     "serving": "4 servings",
                     "description": "Tasty tacos filled with seasoned beef and toppings.",
                     "ingredients": [
@@ -256,6 +301,15 @@
                     ],
                     "rating": 4.3,
                     "views": 11000,
+                    "searchCount": 10000,
+                    "category": [
+                      "beef",
+                      "tacos",
+                      "mexican",
+                      "quick",
+                      "easy",
+                      "family-friendly"
+                    ],
                     "reviews": {
                       "user1": "Easy and delicious!",
                       "user2": "Great for Taco Tuesday!",
@@ -272,7 +326,7 @@
                     "video": null,
                     "imageUrl": "https://cdn.momsdish.com/wp-content/uploads/2021/07/Steak-Stir-Fry-Recipe-014.jpg",
                     "videoUrl": "https://www.youtube.com/watch?v=gWKk55tY7kI",
-                    "duration": "25 minutes",
+                    "duration": "25 min",
                     "serving": "4 servings",
                     "description": "Quick and flavorful beef stir fry with vegetables.",
                     "ingredients": [
@@ -298,6 +352,15 @@
                     ],
                     "rating": 4.6,
                     "views": 13000,
+                    "searchCount": 500,
+                    "category": [
+                      "beef",
+                      "stir fry",
+                      "quick",
+                      "easy",
+                      "flavorful",
+                      "vegetables"
+                    ],
                     "reviews": {
                       "user1": "Delicious and easy!",
                       "user2": "Family favorite!",
@@ -341,6 +404,15 @@
                     ],
                     "rating": 4.4,
                     "views": 10000,
+                    "searchCount": 2000,
+                    "category": [
+                      "beef",
+                      "chili",
+                      "comfort food",
+                      "hearty",
+                      "spicy",
+                      "beans"
+                    ],
                     "reviews": {
                       "user1": "Perfect comfort food!",
                       "user2": "Great for game day!",

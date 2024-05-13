@@ -84,6 +84,8 @@ class _AddState extends State<Add> {
                     steps: steps,
                     rating: 0,
                     views: 0,
+                    searchCount: 0,
+                    category: [],
                   );
                   widget.user.addRecipe(recipe);
                   final notification = UserNotification(
