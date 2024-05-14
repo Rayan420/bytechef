@@ -4,9 +4,7 @@ import 'package:bytechef/constants/colors.dart';
 import 'package:bytechef/data/recipe.dart';
 import 'package:bytechef/data/recipe_repo.dart';
 import 'package:bytechef/data/user.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ProfileRecipeCard extends StatefulWidget {
@@ -128,7 +126,10 @@ class _ProfileRecipeCardState extends State<ProfileRecipeCard> {
                             if (value == 'review') {
                               // Implement review action
                             } else if (value == 'delete') {
-                              RecipeRepository.deleteRecipe(widget.recipe);
+                              setState(() {
+                                RecipeRepository.deleteRecipe(widget.recipe);
+                                widget.owner.deleteRecipe(widget.recipe);
+                              });
                               // Implement delete action
                             } else if (value == 'modify') {
                               // Implement modify action

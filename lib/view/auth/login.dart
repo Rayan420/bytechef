@@ -9,6 +9,7 @@ import 'package:bytechef/view/auth/widget/auth_page_footer.dart';
 import 'package:bytechef/view/auth/widget/form_header.dart';
 import 'package:bytechef/view/auth/widget/my_text_field.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class LogIn extends StatefulWidget {
@@ -157,9 +158,12 @@ class _LogInState extends State<LogIn> {
                                                 signInRequired = false;
                                               });
                                             } else {
-                                              print(
-                                                  UserRepository.users.length);
+                                              if (kDebugMode) {
+                                                print(UserRepository
+                                                    .users.length);
+                                              }
                                               User.persistRegister(user: value);
+                                              User.setCurrentUser(value);
                                               // Navigate to the home screen with the user object as an argument
                                               Navigator.popAndPushNamed(
                                                   context, '/home',

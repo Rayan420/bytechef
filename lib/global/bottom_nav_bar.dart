@@ -29,7 +29,7 @@ class _NavBarState extends State<NavBar> {
     return Scaffold(
       body: IndexedStack(index: tabIndex, children: [
         HomeScreen(user: widget.user),
-        Bookmarks(),
+        const Bookmarks(),
         Add(
           user: widget.user,
         ),

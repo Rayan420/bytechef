@@ -1,16 +1,13 @@
 // ignore_for_file: non_constant_identifier_names, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:bytechef/constants/colors.dart';
 import 'package:bytechef/data/recipe.dart';
 import 'package:bytechef/data/user.dart';
-import 'package:bytechef/data/userrepo.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:bytechef/view/recipe/recipe_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:iconsax/iconsax.dart';
 
 class SearchResult extends StatefulWidget {
-  const SearchResult({Key? key, required this.recipesResult}) : super(key: key);
+  const SearchResult({super.key, required this.recipesResult});
   final List<Recipe> recipesResult;
 
   @override
@@ -74,7 +71,15 @@ class _ResultCardState extends State<ResultCard> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        // add recipe to history
+        User.addToSearchHistory(widget.recipe);
         // Navigate to recipe details page
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => RecipeView(recipe: widget.recipe),
+          ),
+        );
       },
       child: SizedBox(
         width: double.infinity,

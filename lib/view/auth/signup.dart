@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, unused_field
 
 import 'package:bytechef/constants/colors.dart';
 import 'package:bytechef/constants/sizes.dart';
@@ -234,18 +234,10 @@ class _SignUpState extends State<SignUp> {
                                                 signUpRequired = false;
                                               });
 
-                                              if (value != null) {
-                                                // Navigate to the home screen or show a success message
-                                                Navigator.popAndPushNamed(
-                                                    context, '/home',
-                                                    arguments: value);
-                                              } else {
-                                                // Show an error message to the user
-                                                setState(() {
-                                                  _error =
-                                                      'Registration failed. Please try again.';
-                                                });
-                                              }
+                                              // Navigate to the home screen or show a success message
+                                              Navigator.popAndPushNamed(
+                                                  context, '/home',
+                                                  arguments: value);
                                             });
                                           }
                                         },

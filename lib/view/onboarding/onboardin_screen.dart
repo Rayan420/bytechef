@@ -1,4 +1,5 @@
 import 'package:bytechef/view/onboarding/widget/onboarding_widget_last.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:bytechef/config/shared_preference_config.dart';
 import 'package:bytechef/constants/colors.dart';
@@ -9,7 +10,7 @@ import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoardingScreen extends StatefulWidget {
-  const OnBoardingScreen({Key? key}) : super(key: key);
+  const OnBoardingScreen({super.key});
 
   @override
   OnBoardingScreenState createState() => OnBoardingScreenState();
@@ -98,7 +99,9 @@ class OnBoardingScreenState extends State<OnBoardingScreen> {
                 } else {
                   setState(() {
                     SharedPreferencesConfig.saveWelcome("loadWelcome", false);
-                    print(SharedPreferencesConfig.getWelcome("loadWelcome"));
+                    if (kDebugMode) {
+                      print(SharedPreferencesConfig.getWelcome("loadWelcome"));
+                    }
                     Navigator.popAndPushNamed(context, "/auth");
                   });
                 }

@@ -6,9 +6,9 @@ class OnBoardingWidgetLast extends StatelessWidget {
   final OnBoardingModel model;
 
   const OnBoardingWidgetLast({
-    Key? key,
+    super.key,
     required this.model,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

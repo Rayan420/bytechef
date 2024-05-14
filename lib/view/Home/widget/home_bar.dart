@@ -5,9 +5,7 @@ import 'package:bytechef/data/recipe.dart';
 import 'package:bytechef/data/recipe_repo.dart';
 import 'package:bytechef/data/user.dart';
 import 'package:bytechef/view/home/widget/bottom_sheet.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:iconsax/iconsax.dart';
 
 class HomeBar extends StatefulWidget {

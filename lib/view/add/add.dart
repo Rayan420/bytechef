@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unused_element
 
 import 'dart:io';
 import 'package:bytechef/constants/colors.dart';
@@ -13,7 +13,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class Add extends StatefulWidget {
-  Add({super.key, required this.user});
+  const Add({super.key, required this.user});
   final User user;
   @override
   State<Add> createState() => _AddState();
@@ -25,7 +25,7 @@ class _AddState extends State<Add> {
 
   final TextEditingController _ingredientController = TextEditingController();
 
-  TextEditingController _durationController = TextEditingController();
+  final TextEditingController _durationController = TextEditingController();
   File? fileImage;
   File? fileVideo;
   int portion = 1;
@@ -91,11 +91,7 @@ class _AddState extends State<Add> {
                   final notification = UserNotification(
                       title: 'Recipe Approved Alert!',
                       body: 'Your recipe ${recipe.name} has been approved',
-                      time: DateTime.now().day.toString() +
-                          '/' +
-                          DateTime.now().month.toString() +
-                          '/' +
-                          DateTime.now().year.toString(),
+                      time: '${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}',
                       isRead: false,
                       recipe: recipe);
                   widget.user.addNotification(notification);

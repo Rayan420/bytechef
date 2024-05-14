@@ -1,10 +1,13 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:bytechef/constants/colors.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class FridgeItems extends StatefulWidget {
   final void Function(String selectedItem)? onItemSelected;
 
-  const FridgeItems({Key? key, this.onItemSelected}) : super(key: key);
+  const FridgeItems({super.key, this.onItemSelected});
 
   @override
   _FridgeItemsState createState() => _FridgeItemsState();
@@ -80,7 +83,9 @@ class _FridgeItemsState extends State<FridgeItems> {
         selectedItem = selectedItem; // Deselect if already selected
       } else {
         selectedItem = item; // Select the new item
-        print('Selected item: $selectedItem');
+        if (kDebugMode) {
+          print('Selected item: $selectedItem');
+        }
       }
     });
 
@@ -97,7 +102,7 @@ class FridgeItemButton extends StatelessWidget {
   final bool isSelected;
   final VoidCallback onPressed;
 
-  const FridgeItemButton({
+  const FridgeItemButton({super.key, 
     required this.text,
     required this.item,
     required this.isSelected,
@@ -128,7 +133,7 @@ class FridgeItemButton extends StatelessWidget {
               width: 30,
               height: 30,
             ),
-            SizedBox(width: 5),
+            const SizedBox(width: 5),
             Text(
               text[0].toUpperCase() + text.substring(1),
               style: TextStyle(

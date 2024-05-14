@@ -55,7 +55,7 @@ class ResetPage extends StatelessWidget {
                       onPressed: onValueChanged,
                       child: Text(
                         text,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 18,
                         ),

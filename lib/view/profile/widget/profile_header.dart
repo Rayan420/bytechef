@@ -1,14 +1,10 @@
-import 'package:bytechef/constants/colors.dart';
-import 'package:bytechef/constants/strings.dart';
 import 'package:bytechef/data/user.dart';
 import 'package:bytechef/global/custom_button.dart';
 import 'package:bytechef/view/profile/widget/profile_data.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class ProfileHeader extends StatelessWidget {
-  const ProfileHeader({Key? key, required this.user});
+  const ProfileHeader({super.key, required this.user});
   final User user;
 
   @override
@@ -40,7 +36,7 @@ class ProfileHeader extends StatelessWidget {
                             color: Colors.grey.withOpacity(0.5),
                             spreadRadius: 1,
                             blurRadius: 2,
-                            offset: Offset(0, 1),
+                            offset: const Offset(0, 1),
                           ),
                         ],
                       ),
@@ -55,17 +51,17 @@ class ProfileHeader extends StatelessWidget {
                             0.04), // Add some space between the avatar and text
                     ProfileData(
                       label: 'Recipes',
-                      value: user.recipes?.length.toString(),
+                      value: user.recipes.length.toString(),
                     ),
                     SizedBox(width: size.width * 0.04),
                     ProfileData(
                       label: 'Followers',
-                      value: user.followers,
+                      value: user.followersCount,
                     ),
                     SizedBox(width: size.width * 0.04),
                     ProfileData(
                       label: 'Following',
-                      value: user.following,
+                      value: user.followingCount,
                     ),
                   ],
                 )),

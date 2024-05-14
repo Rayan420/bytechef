@@ -1,11 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
 class PostField extends StatelessWidget {
-  PostField({
+  const PostField({
     super.key,
     required this.controller,
     required this.hintText,

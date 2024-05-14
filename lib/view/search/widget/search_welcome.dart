@@ -22,7 +22,7 @@ class SearchWelcome extends StatelessWidget {
           height: MediaQuery.sizeOf(context).height * 0.02,
         ),
         Visibility(
-          visible: User.searchHisotry.isNotEmpty,
+          visible: User.searchHistory.isNotEmpty,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -61,7 +61,8 @@ class SearchWelcome extends StatelessWidget {
                     children: snapshot.data!.keys.map((key) {
                       return SearchHistoryRecipeCard(
                         recipe: snapshot.data![key]!,
-                        date: key,
+                        // date of search as difference in days from now
+                        date: DateTime.now().difference(key).inDays,
                       );
                     }).toList(),
                   ),
@@ -123,6 +124,6 @@ Future<List<Recipe>> getPopularRecipes() async {
   return RecipeRepository.getMostSearchedRecipes();
 }
 
-Future<Map<int, Recipe>> getSearchHistory() async {
+Future<Map<DateTime, Recipe>> getSearchHistory() async {
   return User.getSearchHistory();
 }

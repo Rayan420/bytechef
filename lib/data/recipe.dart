@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:bytechef/data/user.dart';
@@ -42,7 +41,7 @@ class Recipe {
   });
 
   //from json
-  Recipe.fromJson(Map<String, dynamic> json, User owner)
+  Recipe.fromJson(Map<String, dynamic> json, this.owner)
       : name = json['name'],
         image = json['image'],
         video = json['video'],
@@ -56,6 +55,5 @@ class Recipe {
         ingredients = List<String>.from(json['ingredients']),
         searchCount = json['searchCount'],
         steps = List<String>.from(json['steps']),
-        category = List<String>.from(json['category']),
-        owner = owner;
+        category = List<String>.from(json['category']);
 }

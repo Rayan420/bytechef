@@ -1,7 +1,6 @@
 import 'package:bytechef/constants/colors.dart';
 import 'package:bytechef/constants/sizes.dart';
 import 'package:bytechef/constants/strings.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AuthPageFooter extends StatelessWidget {
@@ -50,7 +49,7 @@ class AuthPageFooter extends StatelessWidget {
                   ),
                   Text(
                     tAuthMethod,
-                    style: TextStyle(color: Colors.grey),
+                    style: const TextStyle(color: Colors.grey),
                   ),
                   Container(
                     width: 50, // Adjust the width as needed

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_types_as_parameter_names
+
 import 'package:bytechef/data/recipe.dart';
 import 'package:bytechef/data/recipe_repo.dart';
 import 'package:bytechef/data/user.dart';
@@ -6,12 +8,11 @@ import 'package:bytechef/view/home/widget/home_bar.dart';
 import 'package:bytechef/view/home/widget/popular_recipes.dart';
 import 'package:bytechef/view/home/widget/recipe_recommendation.dart';
 import 'package:bytechef/view/search/search.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key, required this.user}) : super(key: key);
+  const HomeScreen({super.key, required this.user});
   final User user;
 
   @override
@@ -36,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
         // conditionally show app bar
         appBar: isSearchPressed
             ? AppBar(
-                backgroundColor: Color(0xFFECECEC),
+                backgroundColor: const Color(0xFFECECEC),
                 title: Padding(
                   padding: EdgeInsets.only(
                       left: MediaQuery.of(context).size.width * 0.25),
@@ -60,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               )
             : null,
-        backgroundColor: Color(0xFFECECEC),
+        backgroundColor: const Color(0xFFECECEC),
         extendBody: true,
         body: ListView(
           children: [
@@ -75,26 +76,34 @@ class _HomeScreenState extends State<HomeScreen> {
                   onFiltersApplied: (selectedFilter) {
                     setState(() {
                       filter = selectedFilter;
-                      print("Filter: $filter");
+                      if (kDebugMode) {
+                        print("Filter: $filter");
+                      }
                     });
                   },
                   onSearchPressed: (bool) {
                     setState(() {
                       isSearchPressed = bool;
-                      print("Search Pressed: $isSearchPressed");
+                      if (kDebugMode) {
+                        print("Search Pressed: $isSearchPressed");
+                      }
                     });
                   },
                   showProfile: isSearchPressed ? false : true,
                   onSearch: (results) {
                     setState(() {
                       recipesResult = results;
-                      print("recipesResult from search: $recipesResult");
+                      if (kDebugMode) {
+                        print("recipesResult from search: $recipesResult");
+                      }
                     });
                   },
                   onSearchQuery: (query) {
                     setState(() {
                       searchQuery = query;
-                      print("Search Query: $searchQuery");
+                      if (kDebugMode) {
+                        print("Search Query: $searchQuery");
+                      }
                     });
                   },
                 ),
@@ -139,7 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         builder: (context, snapshot) {
                           if (snapshot.connectionState ==
                               ConnectionState.waiting) {
-                            return CircularProgressIndicator();
+                            return const CircularProgressIndicator();
                           } else if (snapshot.hasError) {
                             return Text('Error: ${snapshot.error}');
                           } else {
@@ -179,7 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         builder: (context, snapshot) {
                           if (snapshot.connectionState ==
                               ConnectionState.waiting) {
-                            return CircularProgressIndicator();
+                            return const CircularProgressIndicator();
                           } else if (snapshot.hasError) {
                             return Text('Error: ${snapshot.error}');
                           } else {
@@ -190,7 +199,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: Row(
                                 children: recipes.map((recipe) {
                                   return PopularRecipes(
-                                    recipe: recipe!,
+                                    recipe: recipe,
                                   );
                                 }).toList(),
                               ),

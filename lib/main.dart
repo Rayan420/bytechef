@@ -8,6 +8,7 @@ import 'package:bytechef/data/user.dart';
 import 'package:bytechef/data/userrepo.dart';
 import 'package:bytechef/view/auth/login.dart';
 import 'package:bytechef/view/onboarding/onboardin_screen.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -17,10 +18,12 @@ void main() async {
   // intialize shared preferences
 
   await SharedPreferencesConfig.initialize();
-  print(SharedPreferencesConfig.getWelcome("loadWelcome"));
+  if (kDebugMode) {
+    print(SharedPreferencesConfig.getWelcome("loadWelcome"));
+  }
   await loadJson();
 
-  runApp(MainApp());
+  runApp(const MainApp());
 }
 
 // extract the user data from the json file and the recipes nested in user data create a user object and add it to the user repository and add the recipes to the recipe repository
@@ -34,9 +37,10 @@ Future<void> loadJson() async {
       name: userJson['name'],
       email: userJson['email'],
       password: userJson['password'],
-      followers: userJson['followers'],
-      following: userJson['following'],
-    );
+      followersCount: userJson['followersCount'],
+      followingCount: userJson['followingCount'],
+    )..populateFollowersAndFollowing(List<String>.from(userJson['followers']),
+        List<String>.from(userJson['following']));
 
     for (var recipe in userJson['recipes']) {
       Recipe newRecipe = Recipe(
@@ -63,8 +67,12 @@ Future<void> loadJson() async {
 
     UserRepository.addUser(newUser);
   }
-  print(UserRepository.users.length);
-  print(RecipeRepository.recipeRepo.length);
+  if (kDebugMode) {
+    print(UserRepository.users.length);
+  }
+  if (kDebugMode) {
+    print(RecipeRepository.recipeRepo.length);
+  }
 }
 
 class MainApp extends StatelessWidget {

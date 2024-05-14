@@ -1,14 +1,14 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:bytechef/data/recipe.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SearchHistoryRecipeCard extends StatelessWidget {
-  const SearchHistoryRecipeCard({super.key, required this.recipe, required this.date});
+  const SearchHistoryRecipeCard(
+      {super.key, required this.recipe, required this.date});
   final Recipe recipe;
   final int date;
-  
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -30,9 +30,8 @@ class SearchHistoryRecipeCard extends StatelessWidget {
                 width: MediaQuery.of(context).size.width * 0.2,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  image: const DecorationImage(
-                    image: NetworkImage(
-                        'https://www.avenuecalgary.com/wp-content/uploads/ChefProfile-MichaelAllemeier.jpg'),
+                  image: DecorationImage(
+                    image: NetworkImage('${recipe.imageUrl}'),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -43,14 +42,18 @@ class SearchHistoryRecipeCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Recipe Name',
+                      recipe.name,
                       style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
                     Text(
-                      '4 days ago',
+                      date == 0
+                          ? 'Today'
+                          : date == 1
+                              ? 'Yesterday'
+                              : '$date days ago',
                       style: const TextStyle(fontSize: 15, color: Colors.grey),
                     ),
                   ],

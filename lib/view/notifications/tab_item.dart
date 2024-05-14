@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class TabItem extends StatelessWidget {
   final String title;
-  final int count;
+  final int? count;
 
   const TabItem({
     super.key,
@@ -20,7 +20,7 @@ class TabItem extends StatelessWidget {
             title,
             overflow: TextOverflow.ellipsis,
           ),
-          count > 0
+           count != null 
               ? Container(
                   margin: const EdgeInsetsDirectional.only(start: 5),
                   padding: const EdgeInsets.all(3),
@@ -30,7 +30,7 @@ class TabItem extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      count > 9 ? "9+" : count.toString(),
+                      count! > 9 ? "9+" : count.toString(),
                       style: const TextStyle(
                         color: Colors.black54,
                         fontSize: 10,

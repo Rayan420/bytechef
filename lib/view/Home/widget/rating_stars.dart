@@ -6,7 +6,7 @@ class RatingStars extends StatelessWidget {
   final double rating;
   final int maxRating;
 
-  RatingStars({required this.rating, this.maxRating = 5});
+  const RatingStars({super.key, required this.rating, this.maxRating = 5});
 
   @override
   Widget build(BuildContext context) {
@@ -16,13 +16,13 @@ class RatingStars extends StatelessWidget {
         maxRating,
         (index) {
           if (index < rating) {
-            return Icon(
+            return const Icon(
               Iconsax.star5,
               color: tAccentColor,
               size: 20,
             );
           } else {
-            return Icon(
+            return const Icon(
               Icons.star_border,
               color: tAccentColor,
               size: 20,

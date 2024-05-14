@@ -1,6 +1,5 @@
 import 'package:bytechef/data/notification.dart';
 import 'package:bytechef/data/recipe.dart';
-import 'package:bytechef/data/recipe_repo.dart';
 import 'package:bytechef/data/userrepo.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -8,20 +7,33 @@ class User {
   final String name;
   final String email;
   final String password;
-  final String followers;
-  final String following;
+  String followersCount;
+  String followingCount;
   List<Recipe> recipes = [];
   List<UserNotification> notifications = [];
   static List<Recipe> savedRecipes = [];
-  static Map<int, Recipe> searchHisotry = {};
+  static Map<DateTime, Recipe> searchHistory = {};
+  static List<String> followers = [];
+  static List<String> following = [];
+  static User? currentUser; // Static variable to hold the current user
 
   User({
     required this.name,
     required this.email,
     required this.password,
-    required this.followers,
-    required this.following,
+    required this.followersCount,
+    required this.followingCount,
   });
+
+  // Method to set the current user
+  static void setCurrentUser(User user) {
+    currentUser = user;
+  }
+
+  // Method to get the current user
+  static User? getCurrentUser() {
+    return currentUser;
+  }
 
   void addRecipe(Recipe recipe) {
     recipes.add(recipe);
@@ -48,13 +60,48 @@ class User {
         : savedRecipes.add(recipe);
   }
 
+  // populate the followers and following list from json as args
+  void populateFollowersAndFollowing(
+      List<String> followersList, List<String> followingList) {
+    print("Followers: $followersList");
+    print("Following: $followingList");
+    followers = followersList;
+    following = followingList;
+  }
+
+  // follow a user
+  static void followUser(String email) {
+    following.add(email);
+    // parse followercount to int and increment by 1 for the followed user and update the user repo
+    UserRepository.users
+        .firstWhere((user) => user.email == email)
+        .followersCount = (int.parse(UserRepository.users
+                .firstWhere((user) => user.email == email)
+                .followersCount) +
+            1)
+        .toString();
+  }
+
+  // unfollow a user
+  static void unfollowUser(String email) {
+    following.remove(email);
+    // parse followercount to int and decrement by 1 for the unfollowed user and update the user repo
+    UserRepository.users
+        .firstWhere((user) => user.email == email)
+        .followersCount = (int.parse(UserRepository.users
+                .firstWhere((user) => user.email == email)
+                .followersCount) -
+            1)
+        .toString();
+  }
+
   // from json
   User.fromJson(Map<String, dynamic> json)
       : name = json['name'],
         email = json['email'],
         password = json['password'],
-        followers = json['followers'],
-        following = json['following'];
+        followersCount = json['followersCount'],
+        followingCount = json['followingCount'];
 
   // register user and save to user repo
   static Future<User?> register({
@@ -69,8 +116,8 @@ class User {
         name: name,
         email: email,
         password: password,
-        followers: followers,
-        following: following,
+        followersCount: followers,
+        followingCount: following,
       );
       UserRepository.addUser(user);
       return user;
@@ -88,8 +135,8 @@ class User {
       prefs.setString('name', user.name);
       prefs.setString('email', user.email);
       prefs.setString('password', user.password);
-      prefs.setString('followers', user.followers);
-      prefs.setString('following', user.following);
+      prefs.setString('followers', user.followersCount);
+      prefs.setString('following', user.followingCount);
 
       return true; // Registration successful
     } catch (e) {
@@ -112,24 +159,10 @@ class User {
     return notifications.where((notification) => notification.isRead).toList();
   }
 
-  // Load user data from device storage upon login
+  /// Load user data from device storage upon login
+// Load user data from device storage upon login
   static Future<User?> login(String email, String password) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? storedEmail = prefs.getString('email');
-    String? storedPassword = prefs.getString('password');
-    if (email == storedEmail && password == storedPassword) {
-      print(RecipeRepository.getRecipesByUser(storedEmail!));
-      final user = User(
-        name: prefs.getString('name')!,
-        email: storedEmail,
-        password: storedPassword!,
-        followers: prefs.getString('followers')!,
-        following: prefs.getString('following')!,
-      );
-      user.recipes = RecipeRepository.getRecipesByUser(storedEmail);
-      UserRepository.addUser(user);
-      return user;
-    } else if (UserRepository.users
+    if (UserRepository.users
         .any((user) => user.email == email && user.password == password)) {
       return UserRepository.users.firstWhere(
           (user) => user.email == email && user.password == password);
@@ -138,7 +171,29 @@ class User {
   }
 
   // a method to first 3 most recent recipes in search history and the date searched
-  static Map<int, Recipe> getSearchHistory() {
-    return searchHisotry;
+  static Map<DateTime, Recipe> getSearchHistory() {
+    return searchHistory;
+  }
+
+  // Method to add a recipe to the search history based on the day it was searched
+  static void addToSearchHistory(Recipe recipe) {
+    DateTime now = DateTime.now();
+    // Add the recipe to the search history map with the day as the key
+    searchHistory[now] = recipe;
+  }
+
+  // isfollowing
+  static bool isFollowing(String email) {
+    return following.contains(email);
+  }
+
+  // isfollower
+  static bool isFollower(String email) {
+    return followers.contains(email);
+  }
+
+  // toggle follow
+  static void toggleFollow(String email) {
+    isFollowing(email) ? unfollowUser(email) : followUser(email);
   }
 }

@@ -1,3 +1,5 @@
+// ignore_for_file: use_super_parameters, library_private_types_in_public_api
+
 import 'package:bytechef/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
@@ -40,7 +42,7 @@ class _BottomSheetFilterState extends State<BottomSheetFilter> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
@@ -92,7 +94,7 @@ class _BottomSheetFilterState extends State<BottomSheetFilter> {
               });
             },
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -113,12 +115,12 @@ class _BottomSheetFilterState extends State<BottomSheetFilter> {
                   // Close the bottom sheet
                   Navigator.pop(context);
                 },
-                child: Text('Apply Filters',
+                child: const Text('Apply Filters',
                     style: TextStyle(color: Colors.white)),
               ),
             ],
           ),
-          SizedBox(height: 16)
+          const SizedBox(height: 16)
         ],
       ),
     );
@@ -137,7 +139,7 @@ class _BottomSheetFilterState extends State<BottomSheetFilter> {
         ListTile(
           title: Text(
             title,
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
         Wrap(
@@ -156,7 +158,7 @@ class _BottomSheetFilterState extends State<BottomSheetFilter> {
                   ),
                   side: MaterialStateBorderSide.resolveWith(
                     (states) {
-                      return BorderSide(
+                      return const BorderSide(
                         color: tPrimaryColor, // Adjust border color as needed
                         width: 1,
                       );
@@ -181,7 +183,7 @@ class _BottomSheetFilterState extends State<BottomSheetFilter> {
                             : tPrimaryColor,
                       ),
                     ),
-                    SizedBox(width: 2),
+                    const SizedBox(width: 2),
                     if (isRatingFilter && option != 'All') ...[
                       Icon(Iconsax.star5,
                           color: option == selectedOption

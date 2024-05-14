@@ -1,6 +1,7 @@
 import 'package:bytechef/constants/colors.dart';
 import 'package:flutter/material.dart';
 
+// ignore: non_constant_identifier_names
 Widget NotificationCard({
   required String title,
   required String body,

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferencesConfig {
@@ -7,7 +8,9 @@ class SharedPreferencesConfig {
     try {
       _preferences = await SharedPreferences.getInstance();
     } catch (e) {
-      print('SharedPreferences initialization error: $e');
+      if (kDebugMode) {
+        print('SharedPreferences initialization error: $e');
+      }
       // Handle initialization error, if any
     }
   }

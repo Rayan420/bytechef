@@ -24,15 +24,15 @@ class RouteGenerator {
         return _errorRoute();
 
       case '/onboarding':
-        return MaterialPageRoute(builder: (_) => OnBoardingScreen());
+        return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
       case '/auth':
-        return MaterialPageRoute(builder: (_) => Authentication());
+        return MaterialPageRoute(builder: (_) => const Authentication());
       case '/login':
-        return MaterialPageRoute(builder: (_) => LogIn());
+        return MaterialPageRoute(builder: (_) => const LogIn());
       case '/signup':
-        return MaterialPageRoute(builder: (_) => SignUp());
+        return MaterialPageRoute(builder: (_) => const SignUp());
       case '/forgot-password':
-        return MaterialPageRoute(builder: (_) => ForgotPassword());
+        return MaterialPageRoute(builder: (_) => const ForgotPassword());
 
       default:
         return _errorRoute();

@@ -3,7 +3,7 @@ import 'package:bytechef/view/profile/widget/profile_body_card.dart';
 import 'package:flutter/material.dart';
 
 class ProfileBody extends StatefulWidget {
-  const ProfileBody({Key? key, required this.user}) : super(key: key);
+  const ProfileBody({super.key, required this.user});
   final User user;
 
   @override

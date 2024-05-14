@@ -1,7 +1,5 @@
-import 'dart:typed_data';
 import 'package:bytechef/data/recipe.dart';
-import 'package:bytechef/data/user.dart';
-import 'package:http/http.dart' as http;
+import 'package:flutter/foundation.dart';
 
 class RecipeRepository {
   static List<Recipe> recipeRepo = List.empty(growable: true);
@@ -49,8 +47,9 @@ class RecipeRepository {
           .where((recipe) => recipe.ingredients.any((ingredient) =>
               ingredient.toLowerCase().contains(lowercaseIngredient)))
           .toList();
-    } else
+    } else {
       return recipeRepo.sublist(0, 4);
+    }
 
     // return recipeRepo.sublist(0, 4);
   }
@@ -101,7 +100,9 @@ class RecipeRepository {
       // Check if the rounded rating matches the rating filter
       return filters.contains(roundedRating.toString());
     }).toList();
-    print("filteredRecipes: $filteredRecipes");
+    if (kDebugMode) {
+      print("filteredRecipes: $filteredRecipes");
+    }
 
     return filteredRecipes;
   }

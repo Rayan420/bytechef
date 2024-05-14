@@ -4,8 +4,10 @@
           "name": "John Doe",
           "email": "john.doe@example.com",
           "password": "secure_password",
-          "followers": "1000",
-          "following": "500",
+          "followersCount": "1000",
+          "followingCount": "500",
+          "followers": ["mike.johnson@example.com", "follower2@example.com", "follower3@example.com"],
+          "following": ["mike.johnson@example.com", "following2@example.com", "following3@example.com"],
           "recipes": [
             {
               "id": "123456789",
@@ -217,8 +219,10 @@
                 "name": "Mike Johnson",
                 "email": "mike.johnson@example.com",
                 "password": "secure_password",
-                "followers": "500",
-                "following": "200",
+                "followersCount": "500",
+                "followingCount": "200",
+                "followers": ["john.doe@example.com", "follower2@example.com", "follower3@example.com"],
+                "following": ["john.doe@example.com", "following2@example.com", "following3@example.com"],
                 "recipes": [
                   {
                     "id": "987654321",
