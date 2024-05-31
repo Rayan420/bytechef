@@ -21,6 +21,7 @@ dependencies:
   permission_handler: ^11.3.1
   shared_preferences: ^2.2.3
   smooth_page_indicator: ^1.1.0
+  flutter_rating_bar: ^4.0.0
 
 dev_dependencies:
   flutter_test:
@@ -32,6 +33,7 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/images/onboarding3.jpg
   fonts:
     - family: Montserrat
       fonts:

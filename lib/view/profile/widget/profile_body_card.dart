@@ -4,6 +4,7 @@ import 'package:bytechef/constants/colors.dart';
 import 'package:bytechef/data/recipe.dart';
 import 'package:bytechef/data/recipe_repo.dart';
 import 'package:bytechef/data/user.dart';
+import 'package:bytechef/view/recipe/recipe_view.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -23,6 +24,12 @@ class _ProfileRecipeCardState extends State<ProfileRecipeCard> {
     return GestureDetector(
       onTap: () {
         // Navigate to recipe details page
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => RecipeView(recipe: widget.recipe),
+          ),
+        );
       },
       child: Padding(
         padding: EdgeInsets.only(
@@ -138,17 +145,43 @@ class _ProfileRecipeCardState extends State<ProfileRecipeCard> {
                           itemBuilder: (BuildContext context) =>
                               <PopupMenuEntry<String>>[
                             const PopupMenuItem<String>(
-                              value: 'review',
-                              child: Text('Review'),
-                            ),
-                            const PopupMenuItem<String>(
-                              value: 'delete',
-                              child: Text('Delete'),
+                              value: 'Review',
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Iconsax.message5,
+                                    color: tSecondaryColor,
+                                  ),
+                                  SizedBox(width: 5),
+                                  Text('Review'),
+                                ],
+                              ),
                             ),
                             const PopupMenuItem<String>(
                               value: 'modify',
-                              child: Text('Modify'),
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Iconsax.edit,
+                                    color: tSecondaryColor,
+                                  ),
+                                  SizedBox(width: 5),
+                                  Text('Modify'),
+                                ],
+                              ),
                             ),
+                            const PopupMenuItem<String>(
+                                value: 'delete',
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      Iconsax.trash,
+                                      color: Colors.red,
+                                    ),
+                                    SizedBox(width: 5),
+                                    Text('Delete'),
+                                  ],
+                                )),
                           ],
                         )
                       : IconButton(

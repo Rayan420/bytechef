@@ -9,6 +9,7 @@ import 'package:bytechef/global/helper.dart';
 import 'package:bytechef/view/add/widget/post_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -86,12 +87,14 @@ class _AddState extends State<Add> {
                     views: 0,
                     searchCount: 0,
                     category: [],
+                    reviews: {},
                   );
                   widget.user.addRecipe(recipe);
                   final notification = UserNotification(
                       title: 'Recipe Approved Alert!',
                       body: 'Your recipe ${recipe.name} has been approved',
-                      time: '${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}',
+                      time:
+                          '${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}',
                       isRead: false,
                       recipe: recipe);
                   widget.user.addNotification(notification);
@@ -158,7 +161,7 @@ class _AddState extends State<Add> {
             child: fileImage == null
                 ? IconButton(
                     icon: Icon(
-                      Icons.image,
+                      Iconsax.image5,
                       size: 40,
                       color: Colors.grey,
                     ),
@@ -292,7 +295,7 @@ class _AddState extends State<Add> {
             child: fileImage == null
                 ? IconButton(
                     icon: Icon(
-                      Icons.video_call,
+                      Iconsax.video5,
                       size: 40,
                       color: Colors.grey,
                     ),

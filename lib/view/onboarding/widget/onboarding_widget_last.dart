@@ -27,7 +27,7 @@ class OnBoardingWidgetLast extends StatelessWidget {
                 BlendMode.dstATop,
               ),
               image: const AssetImage('assets/images/onboarding3.jpg'),
-              fit: BoxFit.fill,
+              fit: BoxFit.cover, // Changed to cover for better performance
             ),
           ),
           child: Column(

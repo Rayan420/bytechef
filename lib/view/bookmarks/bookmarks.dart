@@ -14,6 +14,12 @@ class Bookmarks extends StatefulWidget {
 
 class _BookMarkState extends State<Bookmarks> {
   @override
+  void initState() {
+    super.initState();
+    getBookmarks();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

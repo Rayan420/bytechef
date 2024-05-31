@@ -1,12 +1,13 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:bytechef/constants/colors.dart';
 import 'package:bytechef/data/recipe.dart';
 import 'package:bytechef/data/user.dart';
+import 'package:bytechef/global/helper_functions.dart';
 import 'package:bytechef/view/recipe/recipe_view_tabs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter/services.dart';
 
 class RecipeView extends StatefulWidget {
   RecipeView({super.key, required this.recipe});
@@ -24,33 +25,63 @@ class _RecipeViewState extends State<RecipeView> {
         backgroundColor: Colors.transparent,
         actions: [
           PopupMenuButton<String>(
-            icon: Icon(
+            icon: const Icon(
               Icons.more_vert_outlined,
               size: 18,
             ),
             onSelected: (String value) {
-              // Handle menu item selection here
               if (value == 'Share') {
-                // Implement review action
+                showShareDialog(context, widget.recipe);
               } else if (value == 'Rate') {
-                setState(() {});
-                // Implement delete action
-              } else if (value == 'modify') {
-                // Implement modify action
+                showRateDialog(context);
+              } else if (value == 'Review') {
+                // Implement review action
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return ReviewsPage(
+                     reviews: widget.recipe.reviews,
+                  );
+                }));
               }
             },
             itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
               const PopupMenuItem<String>(
                 value: 'Share',
-                child: Text('Share'),
+                child: Row(
+                  children: [
+                    Icon(
+                      Iconsax.share5,
+                      color: tSecondaryColor,
+                    ),
+                    SizedBox(width: 5),
+                    Text('Share'),
+                  ],
+                ),
               ),
               const PopupMenuItem<String>(
                 value: 'Rate',
-                child: Text('Rate'),
+                child: Row(
+                  children: [
+                    Icon(
+                      Iconsax.star5,
+                      color: tSecondaryColor,
+                    ),
+                    SizedBox(width: 5),
+                    Text('Rate'),
+                  ],
+                ),
               ),
               const PopupMenuItem<String>(
                 value: 'Review',
-                child: Text('Review'),
+                child: Row(
+                  children: [
+                    Icon(
+                      Iconsax.message5,
+                      color: tSecondaryColor,
+                    ),
+                    SizedBox(width: 5),
+                    Text('Review'),
+                  ],
+                ),
               ),
               // if owner of the recipe
             ],
@@ -173,8 +204,6 @@ class _RecipeViewState extends State<RecipeView> {
                 SizedBox(
                   height: 15,
                 ),
-
-                // recipe name
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
@@ -190,8 +219,6 @@ class _RecipeViewState extends State<RecipeView> {
                 SizedBox(
                   height: 10,
                 ),
-
-                // row with user detail and follow button
                 Row(
                   children: [
                     CircleAvatar(
@@ -224,7 +251,6 @@ class _RecipeViewState extends State<RecipeView> {
                       ],
                     ),
                     Spacer(),
-                    // if the user is not the owner of the recipe
                     if (widget.recipe.owner != User.getCurrentUser())
                       ElevatedButton(
                         onPressed: () {
@@ -252,8 +278,6 @@ class _RecipeViewState extends State<RecipeView> {
                           ),
                         ),
                       ),
-
-                    // if the user is the owner of the recipe
                     if (widget.recipe.owner == User.getCurrentUser())
                       ElevatedButton(
                         onPressed: () {
@@ -280,8 +304,6 @@ class _RecipeViewState extends State<RecipeView> {
                 SizedBox(
                   height: 10,
                 ),
-
-                // recipe tabs
                 Expanded(
                   child: RecipeViewTab(
                     recipe: widget.recipe,
@@ -307,7 +329,7 @@ class _RecipeViewState extends State<RecipeView> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     elevation: 5),
-                child: Row(
+                child: const Row(
                   children: [
                     Icon(
                       Iconsax.play,

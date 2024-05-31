@@ -44,22 +44,22 @@ Future<void> loadJson() async {
 
     for (var recipe in userJson['recipes']) {
       Recipe newRecipe = Recipe(
-        name: recipe['name'],
-        duration: recipe['duration'],
-        serving: recipe['serving'],
-        description: recipe['description'],
-        rating: recipe['rating'],
-        views: recipe['views'],
-        ingredients: List<String>.from(recipe['ingredients']),
-        steps: List<String>.from(recipe['steps']),
-        owner: newUser,
-        video: recipe['video'], // Handling null case
-        videoUrl: recipe['videoUrl'],
-        imageUrl: recipe['imageUrl'],
-        searchCount: recipe['searchCount'],
-        image: recipe['image'],
-        category: List<String>.from(recipe['category']),
-      );
+          name: recipe['name'],
+          duration: recipe['duration'],
+          serving: recipe['serving'],
+          description: recipe['description'],
+          rating: recipe['rating'],
+          views: recipe['views'],
+          ingredients: List<String>.from(recipe['ingredients']),
+          steps: List<String>.from(recipe['steps']),
+          owner: newUser,
+          video: recipe['video'], // Handling null case
+          videoUrl: recipe['videoUrl'],
+          imageUrl: recipe['imageUrl'],
+          searchCount: recipe['searchCount'],
+          image: recipe['image'],
+          category: List<String>.from(recipe['category']),
+          reviews: Map<String, String>.from(recipe['reviews']));
 
       newUser.addRecipe(newRecipe);
       RecipeRepository.addRecipe(newRecipe);

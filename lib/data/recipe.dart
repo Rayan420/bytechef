@@ -18,7 +18,7 @@ class Recipe {
   final User owner;
   final int views;
   final double rating;
-  final Map<String, User> reviews = {};
+  final Map<String, String> reviews;
   final int searchCount;
   final List<String> category;
 
@@ -38,6 +38,7 @@ class Recipe {
     required this.views,
     required this.searchCount,
     required this.category,
+    required this.reviews,
   });
 
   //from json
@@ -55,5 +56,6 @@ class Recipe {
         ingredients = List<String>.from(json['ingredients']),
         searchCount = json['searchCount'],
         steps = List<String>.from(json['steps']),
-        category = List<String>.from(json['category']);
+        category = List<String>.from(json['category']),
+        reviews = Map<String, String>.from(json['reviews']);
 }
