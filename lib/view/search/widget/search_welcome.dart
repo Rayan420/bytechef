@@ -21,6 +21,52 @@ class SearchWelcome extends StatelessWidget {
         SizedBox(
           height: MediaQuery.sizeOf(context).height * 0.02,
         ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Popular Searches',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Poppins',
+              ),
+            ),
+            TextButton(
+              onPressed: () {},
+              child: Text(
+                'View all',
+                style: TextStyle(
+                  color: tPrimaryColor,
+                ),
+              ),
+            ),
+          ],
+        ),
+        FutureBuilder(
+            future: getPopularRecipes(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return CircularProgressIndicator();
+              } else if (snapshot.hasError) {
+                return Text('Error: ${snapshot.error}');
+              } else {
+                return SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: snapshot.data!.map((recipe) {
+                      return RecipeRecommendationCard(
+                        recipe: recipe,
+                      );
+                    }).toList(),
+                  ),
+                );
+              }
+            }),
+        SizedBox(
+          height: MediaQuery.sizeOf(context).height * 0.02,
+        ),
         Visibility(
           visible: User.searchHistory.isNotEmpty,
           child: Row(
@@ -63,52 +109,6 @@ class SearchWelcome extends StatelessWidget {
                         recipe: snapshot.data![key]!,
                         // date of search as difference in days from now
                         date: DateTime.now().difference(key).inDays,
-                      );
-                    }).toList(),
-                  ),
-                );
-              }
-            }),
-        SizedBox(
-          height: MediaQuery.sizeOf(context).height * 0.02,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              'Popular Searches',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Poppins',
-              ),
-            ),
-            TextButton(
-              onPressed: () {},
-              child: Text(
-                'View all',
-                style: TextStyle(
-                  color: tPrimaryColor,
-                ),
-              ),
-            ),
-          ],
-        ),
-        FutureBuilder(
-            future: getPopularRecipes(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return CircularProgressIndicator();
-              } else if (snapshot.hasError) {
-                return Text('Error: ${snapshot.error}');
-              } else {
-                return SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: snapshot.data!.map((recipe) {
-                      return RecipeRecommendationCard(
-                        recipe: recipe,
                       );
                     }).toList(),
                   ),
